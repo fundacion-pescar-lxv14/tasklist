@@ -1,3 +1,8 @@
-export const Resolve = (Request,Response) => Request
-    .then(data => Response(data))
-    .catch(err => Response(err))
+export const git = ({APPNAME,DESCRIPTION,AUTHOR}) => ({
+    APPNAME,
+    DESCRIPTION,
+    AUTHOR
+})
+export const Resolve = (Request, Response) => Request
+    .then(data => Response.json(data))
+    .catch(err => Response.json(err))
