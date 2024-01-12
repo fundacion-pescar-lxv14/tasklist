@@ -1,4 +1,4 @@
-export const git = ({APPNAME,DESCRIPTION,AUTHOR}) => ({
+export const config = ({APPNAME,DESCRIPTION,AUTHOR}) => ({
     APPNAME,
     DESCRIPTION,
     AUTHOR
