@@ -1,4 +1,5 @@
 import express, { urlencoded } from 'express';
+import cors from 'cors';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
 import dbConn from './config/db.js';
@@ -9,6 +10,7 @@ dotenv.config()
 const [app,{DATABASE,PORT,URI}]=[express(), process.env]
 dbConn(URI, DATABASE)
 
+app.use(cors());
 app.use(morgan('dev'))
 app.use(urlencoded({extended: true}))
 app.use("/", authRouter)
