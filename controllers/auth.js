@@ -1,8 +1,11 @@
 import bcrypt from "bcrypt";
 import User from "../models/auth.js";
-import { config } from "../config/utils.js";
+import { config, Resolve } from "../config/utils.js";
 
-export const Home = async (req, res) => res.json(config(process.env))
+export const Home = async (req, res) => 
+    res.json(config(process.env))
+export const Find = ({params:{_id}},res) => 
+    Resolve(User.find(_id?{_id}:{}), res)
 export const Register = async(req, res) => {
     const { password } = req.body
     const hash = await bcrypt.hash(password[0], 8)
@@ -15,6 +18,8 @@ export const Register = async(req, res) => {
     .catch(err => res.json({ 
         ...config(process.env), err, message: 'Error al registrar el Usuario' }))
 }
+export const Update = ({params:{_id}}, res) => 
+    Resolve(User.updateOne({_id}), res)
 export const Validate = async(req, res) =>{
     const { username, password } = req.body
     const users = await User.find({username})
