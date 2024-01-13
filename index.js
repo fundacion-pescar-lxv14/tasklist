@@ -10,7 +10,7 @@ dotenv.config()
 const [app,{DATABASE,PORT,URI}]=[express(), process.env]
 dbConn(URI, DATABASE)
 
-app.use(cors());
+app.use(cors({origin:true,credentials: true}));
 app.use(morgan('dev'))
 app.use(urlencoded({extended: true}))
 app.use("/", authRouter)
