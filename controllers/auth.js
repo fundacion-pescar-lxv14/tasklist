@@ -2,8 +2,6 @@ import bcrypt from "bcrypt";
 import User from "../models/auth.js";
 import { config, Resolve } from "../config/utils.js";
 
-export const Home = async (req, res) => 
-    res.json(config(process.env))
 export const Find = ({params:{_id}},res) => 
     Resolve(User.find(_id?{_id}:{}), res)
 export const Register = async(req, res) => {
